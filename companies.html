@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Company directory — MapleCheck</title>
 <meta name="description" content="Every company MapleCheck has researched so far, and what we found." />
+<link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="nav-brand">🍁 MapleCheck</a>
+    <a href="index.html" class="nav-brand"><img src="logo.png" alt="" class="nav-logo" />MapleCheck</a>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="companies.html" class="active">Companies</a>
@@ -32,11 +33,13 @@
     </p>
 
     <div class="directory-controls">
-      <input type="text" id="company-search" placeholder="Search by company or domain…" />
+      <input type="text" id="company-search" placeholder="Search by company, domain, or category…" />
       <button class="filter-btn active-all" data-filter="all">All</button>
       <button class="filter-btn" data-filter="ca">Canadian only</button>
       <button class="filter-btn" data-filter="us">US-owned only</button>
     </div>
+
+    <div class="category-tabs" id="category-tabs"></div>
 
     <div class="company-count" id="company-count"></div>
     <div class="company-list" id="company-list"></div>
@@ -45,7 +48,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-meta">🍁 MapleCheck · community-researched, not a government service</div>
+    <div class="footer-meta">MapleCheck · community-researched, not a government service</div>
     <div class="footer-links">
       <a href="companies.html">Companies</a>
       <a href="contact.html">Add a company</a>

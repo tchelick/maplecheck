@@ -71,6 +71,17 @@ nav.site-nav .wrap {
   align-items: center;
   gap: 8px;
 }
+.nav-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+.hero-logo {
+  height: 92px;
+  width: auto;
+  display: block;
+  margin-bottom: 20px;
+}
 .nav-links {
   display: flex;
   gap: 28px;
@@ -235,6 +246,62 @@ footer.site-footer .wrap {
 .filter-btn.active-us { background: var(--us-blue); color: #fff; border-color: var(--us-blue); }
 .filter-btn.active-all { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
+/* ---- Category tabs ---- */
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.cat-tab {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.cat-tab:hover { border-color: var(--pine); color: var(--ink); }
+.cat-tab.active {
+  background: var(--pine);
+  border-color: var(--pine);
+  color: #fff;
+  font-weight: 600;
+}
+.cat-tab-count {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  opacity: 0.65;
+}
+
+/* ---- Category groupings in the list ---- */
+.category-group { margin-bottom: 36px; }
+.category-heading {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px 0 10px;
+  border-bottom: 2px solid var(--pine);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.category-heading-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
 .company-count { font-size: 14px; color: var(--ink-soft); margin-bottom: 12px; }
 
 .company-list { border-top: 1px solid var(--line); }
@@ -291,5 +358,21 @@ footer.site-footer .wrap {
   .how-steps { grid-template-columns: 1fr; }
   .company-row { grid-template-columns: 1fr; }
   .company-hq { text-align: left; }
-  .nav-links { gap: 16px; font-size: 14px; }
+
+  /* The brand + four links don't fit on one line at phone widths — without
+     wrapping, the nav pushes the whole page into horizontal scroll. */
+  nav.site-nav .wrap {
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 6px 16px;
+  }
+  .nav-brand { font-size: 18px; }
+  .nav-logo { height: 28px; }
+  .nav-links { gap: 16px; font-size: 14px; flex-wrap: wrap; }
+
+  .hero { padding: 56px 0 48px; }
+  .hero-logo { height: 72px; }
+  .cat-tab { font-size: 13px; padding: 7px 12px; }
 }
