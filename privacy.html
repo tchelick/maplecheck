@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy policy — MapleCheck</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">🍁 MapleCheck</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Add a company</a>
+      <a href="privacy.html" class="active">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section policy">
+  <div class="wrap">
+    <h2>Privacy policy</h2>
+    <p class="updated-date">Last updated: [DATE — fill in on publish]</p>
+
+    <p>MapleCheck is a browser extension that checks whether a company is
+    Canadian-owned and shows a small badge with that information while you
+    browse. This page explains exactly what the extension does with data,
+    in plain language.</p>
+
+    <h2>What MapleCheck does automatically, with no action from you</h2>
+    <ul>
+      <li>Reads the domain name (e.g. "walmart.ca") of the site you're currently on, to check it against our ownership database.</li>
+      <li>This check happens entirely inside your own browser, using a dataset bundled with the extension. No domain you visit is sent to us, to any server we operate, or to any third party, as part of this basic check.</li>
+      <li>Stores your current site's result, and any badge position/minimized-state preference, locally in your browser only (using Chrome's built-in local storage). This data never leaves your device and is not accessible to us.</li>
+    </ul>
+
+    <h2>What MapleCheck does only if you choose to use a specific feature</h2>
+    <ul>
+      <li><strong>"Show an unverified guess":</strong> if a site isn't in our database and you click this button, the extension sends the domain name to Wikidata's public API (wikidata.org) to look for a match. This is the only feature that sends any browsing information outside your own browser, and it only happens when you click it. Wikidata's own privacy practices apply to that request — we don't control or see it.</li>
+      <li><strong>"Request we look into this site":</strong> saves the domain name locally in your browser as a research request. As of this version, this stays on your device — it is not automatically sent to us. (If this changes in a future version, this policy will be updated first.)</li>
+      <li><strong>"Report incorrect data":</strong> if you submit a report, it opens a pre-filled email in your own email client, addressed to maplecheck@northmail.ca, containing the domain, the current listing, and whatever you typed in the report form. Nothing is sent unless you actually send that email — the extension itself doesn't transmit it. A copy is also saved locally in your browser.</li>
+    </ul>
+
+    <h2>What we don't do</h2>
+    <ul>
+      <li>We don't track which sites you visit beyond what's needed to show the current site's badge, and that check never leaves your browser.</li>
+      <li>We don't use cookies, analytics, or advertising trackers.</li>
+      <li>We don't create user accounts, and we don't know who you are.</li>
+      <li>We don't sell or share any data, because we don't collect any to begin with — the only data that ever reaches us is what you deliberately email us.</li>
+    </ul>
+
+    <h2>Data you send us directly</h2>
+    <p>If you email maplecheck@northmail.ca (whether through the extension's report feature or on your own), we receive whatever is in that email, including your email address. We use it only to review and improve the accuracy of MapleCheck's data. We don't add you to any mailing list or use your email for anything else.</p>
+
+    <h2>Third-party services</h2>
+    <p>The only third-party service MapleCheck's extension code talks to is Wikidata's public API, and only when you click "Show an unverified guess." See <a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy" target="_blank" rel="noopener">Wikimedia's privacy policy</a> for how they handle that request.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If MapleCheck adds features that change what data is collected or where it goes (for example, a future hosted backend), this page will be updated before that feature ships, not after.</p>
+
+    <h2>Questions</h2>
+    <p>Email <a href="mailto:maplecheck@northmail.ca">maplecheck@northmail.ca</a>.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-meta">🍁 MapleCheck · community-researched, not a government service</div>
+    <div class="footer-links">
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Add a company</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

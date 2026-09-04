@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Company directory — MapleCheck</title>
+<meta name="description" content="Every company MapleCheck has researched so far, and what we found." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">🍁 MapleCheck</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="companies.html" class="active">Companies</a>
+      <a href="contact.html">Add a company</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Everything we've researched so far</h2>
+    <p class="section-lede">
+      This list matches the extension's live dataset exactly. A "still being
+      verified" note means our sources genuinely disagree or the picture is
+      more complicated than a simple yes/no — we'd rather tell you that than
+      guess. Don't see a company here? <a href="contact.html">Ask us to look into it.</a>
+    </p>
+
+    <div class="directory-controls">
+      <input type="text" id="company-search" placeholder="Search by company or domain…" />
+      <button class="filter-btn active-all" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ca">Canadian only</button>
+      <button class="filter-btn" data-filter="us">US-owned only</button>
+    </div>
+
+    <div class="company-count" id="company-count"></div>
+    <div class="company-list" id="company-list"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-meta">🍁 MapleCheck · community-researched, not a government service</div>
+    <div class="footer-links">
+      <a href="companies.html">Companies</a>
+      <a href="contact.html">Add a company</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="extension-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
