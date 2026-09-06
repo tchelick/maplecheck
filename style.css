@@ -214,6 +214,28 @@ footer.site-footer .wrap {
 .footer-links a { color: var(--ink-soft); text-decoration: none; }
 .footer-links a:hover { color: var(--ink); }
 .footer-meta { font-size: 13px; color: var(--ink-soft); }
+/* flex-basis 100% drops the disclosure onto its own line below the footer
+   row rather than squeezing the existing meta text and links. */
+.footer-affiliate {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 80ch;
+  padding-top: 4px;
+}
+
+.affiliate-disclosure {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 72ch;
+  margin: 20px 0 0;
+  padding: 12px 16px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
 
 /* ---- Companies directory page ---- */
 .directory-controls {
@@ -383,6 +405,16 @@ footer.site-footer .wrap {
   margin-top: 24px;
 }
 .contact-card h3 { font-size: 18px; margin-bottom: 10px; }
+.form-embed {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--paper);
+}
+.form-embed iframe { display: block; width: 100%; border: 0; }
+.form-fallback { font-size: 13.5px; color: var(--ink-soft); margin-top: 12px; }
+
 .contact-list { padding-left: 20px; }
 .contact-list li { margin-bottom: 8px; font-size: 15px; }
 
