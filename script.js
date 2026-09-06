@@ -103,21 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Flagged entries get a way for readers to contribute what they know.
-  // A mailto keeps this backend-free, matching how the extension already
-  // handles corrections — the subject line carries the domain so replies
-  // land sorted rather than as a pile of "your site is wrong" emails.
-  const VERIFY_EMAIL = "maplecheck@northmail.ca";
+  //
+  // This points at the submission form rather than a mailto: a mailto link
+  // silently does nothing for anyone without a desktop mail client set up,
+  // which is most people on webmail — the click just appears to fail.
+  //
+  // company and domain ride along as query parameters so a submission arrives
+  // already attached to the right entry. Tally populates hidden fields with
+  // matching names; if those fields do not exist it ignores the parameters,
+  // so this is safe either way.
+  const SUBMIT_FORM = "https://tally.so/r/1AeroQ";
 
   function verifyActionHtml(e) {
     if (e.confidence !== "verify") return "";
-    const subject = encodeURIComponent(`MapleCheck verification: ${e.brand} (${e.domain})`);
-    const body = encodeURIComponent(
-      `I have information about who owns ${e.brand} (${e.domain}).\n\n` +
-        `What I know:\n\n\n` +
-        `Where I found it (a filing, a news article, a company statement, or direct knowledge):\n\n\n` +
-        `Optional — where their products are made, and where the materials come from:\n\n`
-    );
-    return `<a class="verify-btn" href="mailto:${VERIFY_EMAIL}?subject=${subject}&body=${body}">Know who owns this? Help verify →</a>`;
+    const params = new URLSearchParams({ company: e.brand, domain: e.domain });
+    return `<a class="verify-btn" href="${SUBMIT_FORM}?${params}" target="_blank" rel="noopener">Know who owns this? Help verify →</a>`;
   }
 
   function rowHtml(e) {
