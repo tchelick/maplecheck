@@ -339,6 +339,20 @@ footer.site-footer .wrap {
 .made-ca { color: var(--pine); border-color: var(--pine); background: #eef4f0; }
 .made-mixed { color: #7a5c00; border-color: #c9a400; background: #fffbea; }
 .made-imported { color: #55524a; border-color: #bdb8ab; background: #f4f2ec; }
+
+.verify-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 13px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--unverified-gold);
+  background: #fffbea;
+  color: #7a5c00;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.verify-btn:hover { background: var(--unverified-gold); color: #fff; }
 .company-note { font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; max-width: 58ch; }
 .company-tag {
   font-size: 12px;
