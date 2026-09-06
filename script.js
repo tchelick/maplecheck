@@ -77,6 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return { cls: "tag-notus", text: "Unclear" };
   }
 
+  // The dataset is keyed by domain, so the store link needs no extra data —
+  // but only build one from a domain that actually looks like a hostname,
+  // so a malformed key can never turn into an unexpected href.
+  const DOMAIN_RE = /^[a-z0-9.-]+\.[a-z]{2,}$/i;
+
+  function storeLinkHtml(domain) {
+    if (!DOMAIN_RE.test(domain)) return "";
+    return `<a class="company-link" href="https://${domain}" target="_blank" rel="noopener noreferrer">${domain} ↗</a>`;
+  }
+
   function rowHtml(e) {
     const tag = tagFor(e);
     const verifyBadge = e.confidence === "verify" ? `<div class="verify-note">⚠ Still being verified</div>` : "";
@@ -84,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="company-row">
         <div>
           <div class="company-brand">${e.brand}</div>
+          ${storeLinkHtml(e.domain)}
           ${e.note ? `<div class="company-note">${e.note}</div>` : ""}
           ${verifyBadge}
         </div>
