@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Telecom & Mobile",
     "Banking & Insurance",
     "Media & Entertainment",
+    "Dating & Social",
     "Travel & Transportation",
     "Gas & Convenience",
     "Tech & Online Services",
