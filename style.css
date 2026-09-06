@@ -323,6 +323,22 @@ footer.site-footer .wrap {
   border-bottom: 1px solid transparent;
 }
 .company-link:hover { color: var(--pine-light); border-bottom-color: currentColor; }
+
+/* Manufacturing origin — deliberately styled differently from the ownership
+   tag so the two axes never read as the same claim. */
+.made-tag {
+  display: inline-block;
+  margin: 6px 0 0 10px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border: 1px solid;
+  vertical-align: middle;
+}
+.made-ca { color: var(--pine); border-color: var(--pine); background: #eef4f0; }
+.made-mixed { color: #7a5c00; border-color: #c9a400; background: #fffbea; }
+.made-imported { color: #55524a; border-color: #bdb8ab; background: #f4f2ec; }
 .company-note { font-size: 13.5px; color: var(--ink-soft); margin-top: 4px; max-width: 58ch; }
 .company-tag {
   font-size: 12px;

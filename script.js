@@ -87,6 +87,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return `<a class="company-link" href="https://${domain}" target="_blank" rel="noopener noreferrer">${domain} ↗</a>`;
   }
 
+  // Where something is made is a different question from who owns it, so it
+  // gets its own marker rather than being folded into the ownership tag.
+  // Absent means the company hasn't said publicly — shown as nothing rather
+  // than as a guess.
+  const MADE_IN_LABELS = {
+    Canada: { cls: "made-ca", text: "Made in Canada" },
+    mixed: { cls: "made-mixed", text: "Partly made in Canada" },
+    imported: { cls: "made-imported", text: "Made abroad" },
+  };
+
+  function madeInHtml(e) {
+    const m = MADE_IN_LABELS[e.madeIn];
+    return m ? `<span class="made-tag ${m.cls}">${m.text}</span>` : "";
+  }
+
   function rowHtml(e) {
     const tag = tagFor(e);
     const verifyBadge = e.confidence === "verify" ? `<div class="verify-note">⚠ Still being verified</div>` : "";
@@ -95,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div>
           <div class="company-brand">${e.brand}</div>
           ${storeLinkHtml(e.domain)}
+          ${madeInHtml(e)}
           ${e.note ? `<div class="company-note">${e.note}</div>` : ""}
           ${verifyBadge}
         </div>
