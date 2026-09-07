@@ -294,17 +294,19 @@ footer.site-footer .wrap {
   padding-top: 4px;
 }
 
+/* Full container width on purpose — constrained to a reading measure it
+   stacked into a tall block that competed with the page heading. Wide and
+   shallow reads as a disclosure strip instead. */
 .affiliate-disclosure {
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.5;
   color: var(--ink-soft);
-  max-width: 72ch;
+  max-width: none;
   margin: 20px 0 0;
-  padding: 12px 16px;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
+  padding: 9px 0 0;
+  border-top: 1px solid var(--line);
 }
+.affiliate-disclosure strong { color: var(--ink); font-weight: 600; }
 
 /* ---- Companies directory page ---- */
 .directory-controls {
