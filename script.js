@@ -109,9 +109,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // so a malformed key can never turn into an unexpected href.
   const DOMAIN_RE = /^[a-z0-9.-]+\.[a-z]{2,}$/i;
 
-  function storeLinkHtml(domain) {
-    if (!DOMAIN_RE.test(domain)) return "";
-    return `<a class="company-link" href="https://${domain}" target="_blank" rel="noopener noreferrer">${domain} ↗</a>`;
+  // storeUrl overrides the domain when a company runs separate regional
+  // storefronts and the one we key on is American — sending a Canadian to a
+  // US store priced in USD is the opposite of what this site is for.
+  //
+  // Validated rather than trusted: only https, only a real hostname, no
+  // credentials in the URL. The dataset is ours, but this value becomes an
+  // href, and "it's our own data" is exactly the assumption that stops being
+  // true the day the dataset is edited by anyone else.
+  function safeStoreUrl(raw) {
+    try {
+      const u = new URL(raw);
+      if (u.protocol !== "https:") return null;
+      if (u.username || u.password) return null;
+      if (!DOMAIN_RE.test(u.hostname)) return null;
+      return u.href;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function storeLinkHtml(e) {
+    const override = e.storeUrl ? safeStoreUrl(e.storeUrl) : null;
+    if (override) {
+      // Show the hostname rather than the full URL — "ca.attitudeliving.com"
+      // reads as a place, "https://ca.attitudeliving.com/" reads as noise.
+      const shown = new URL(override).hostname;
+      return `<a class="company-link" href="${override}" target="_blank" rel="noopener noreferrer">${shown} ↗</a>`;
+    }
+    if (!DOMAIN_RE.test(e.domain)) return "";
+    return `<a class="company-link" href="https://${e.domain}" target="_blank" rel="noopener noreferrer">${e.domain} ↗</a>`;
   }
 
   // Where something is made is a different question from who owns it, so it
@@ -173,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="company-row">
         <div>
           <div class="company-brand">${e.brand}</div>
-          ${storeLinkHtml(e.domain)}
+          ${storeLinkHtml(e)}
           ${madeInHtml(e)}
           ${alertsHtml(e)}
           ${e.note ? `<div class="company-note">${e.note}</div>` : ""}
