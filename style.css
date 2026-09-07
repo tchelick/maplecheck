@@ -205,6 +205,20 @@ nav.site-nav .wrap {
   border-color: var(--canada-red);
 }
 .ext-note { font-size: 14px; color: var(--ink-soft, #555); }
+/* The honesty note on the extension card. Bordered rather than tinted, so it
+   reads as a caveat the project is volunteering, not a warning banner. */
+.ext-beta {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--unverified-gold);
+  border-radius: var(--radius-md);
+  background: var(--paper, #fff);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft, #555);
+}
+.ext-beta strong { color: var(--ink); }
 .coming-soon-tag {
   display: inline-block;
   font-size: 11.5px;
