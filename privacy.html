@@ -35,12 +35,14 @@
     <h2>What MapleCheck does automatically, with no action from you</h2>
     <ul>
       <li>Reads the domain name (e.g. "walmart.ca") of the site you're currently on, to check it against our ownership database.</li>
-      <li>This check happens entirely inside your own browser, using a dataset bundled with the extension. No domain you visit is sent to us, to any server we operate, or to any third party, as part of this basic check.</li>
+      <li>This check happens entirely inside your own browser. No domain you visit is sent to us, to any server we operate, or to any third party, as part of this basic check.</li>
+      <li><strong>Downloads the ownership database from maplecheck.store, about every six hours.</strong> The whole database is downloaded at once and then searched on your device — the extension never asks our server "who owns this site?", because that question is exactly what would reveal where you browse. What our host does see is that some browser requested the database file: an IP address, and the time. It is the same information any website sees when you visit it, it is not tied to you or to any account, and it says nothing about which sites you visited. We do this so a correction reaches you within hours instead of waiting weeks for a browser store to approve an update.</li>
       <li>Stores your current site's result, and any badge position/minimized-state preference, locally in your browser only (using your browser's own built-in extension storage). This data never leaves your device and is not accessible to us.</li>
     </ul>
 
     <h2>What MapleCheck does only if you choose to use a specific feature</h2>
     <ul>
+      <li><strong>"Turn on badges for every site":</strong> by default the on-page badge only appears on the sites this published version already knew about, because a browser extension has to declare in advance which sites it may run on. If you press this button, your browser asks whether to let MapleCheck run on any site — and you can say no. Saying yes means newly added companies get a badge without waiting for an extension update. It does <em>not</em> send us anything new: the lookup still happens on your device against the downloaded database, exactly as before. You can withdraw it at any time in your browser's extension settings.</li>
       <li><strong>"Show an unverified guess":</strong> if a site isn't in our database and you click this button, the extension sends the domain name to Wikidata's public API (wikidata.org) to look for a match. This is the only feature that sends any browsing information outside your own browser, and it only happens when you click it. Wikidata's own privacy practices apply to that request — we don't control or see it.</li>
       <li><strong>"Request we look into this site":</strong> sends us the domain name of the site you're on — and nothing else. This happens as soon as you click the button, without a further confirmation step, so treat pressing it as sending it. We receive only the domain: no page URL, no account, nothing identifying you. The request is delivered through a Google Form we own, so Google processes it in transit. A copy is also kept locally in your browser so you can see what you've asked about.</li>
       <li><strong>"Report incorrect data":</strong> sends us the domain, the brand, the reason you picked and any details you typed. It is sent as soon as you press "Submit report", without a further confirmation step, so treat pressing it as sending it. The form also has an optional email box, described below. A copy of the report — without the email address — is kept locally in your browser so you can see what you sent. Like the research request, this is delivered through a Google Form we own, so Google processes it in transit.</li>
@@ -50,7 +52,7 @@
 
     <h2>What we don't do</h2>
     <ul>
-      <li>We don't track which sites you visit beyond what's needed to show the current site's badge, and that check never leaves your browser.</li>
+      <li>We don't track which sites you visit beyond what's needed to show the current site's badge, and that check never leaves your browser. Downloading the whole database rather than querying it per-site is a deliberate choice for this reason: it costs more bandwidth and gives us less information, which is the trade we want.</li>
       <li>We don't use cookies, analytics, or advertising trackers.</li>
       <li>We don't create user accounts, and we don't know who you are.</li>
       <li>We don't sell or share any data. The only things that ever reach us are what you deliberately send: a domain when you press "Request we look into this site", a correction when you press "Submit report", an email address if you choose to give us one, or an email you write to us. We hold no profile of you and no history of where you browse.</li>
@@ -60,7 +62,7 @@
     <p>If you email maplecheck@northmail.ca (whether through the extension's report feature or on your own), we receive whatever is in that email, including your email address. We use it only to review and improve the accuracy of MapleCheck's data. We don't add you to any mailing list or use your email for anything else.</p>
 
     <h2>Third-party services</h2>
-    <p>MapleCheck involves three third-party services, each only when you choose to use the feature that reaches it.</p>
+    <p>Besides our own site (maplecheck.store, which serves the database described above), MapleCheck involves three third-party services, each only when you choose to use the feature that reaches it.</p>
     <ul>
       <li><strong>Wikidata</strong> — queried when you click "Show an unverified guess." See <a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy" target="_blank" rel="noopener">Wikimedia's privacy policy</a>.</li>
       <li><strong>Google Forms</strong> — carries the domain when you click "Request we look into this site", and carries your report when you submit one. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</li>
