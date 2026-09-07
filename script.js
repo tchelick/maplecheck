@@ -129,6 +129,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return m ? `<span class="made-tag ${m.cls}">${m.text}</span>` : "";
   }
 
+  // Two warnings that deliberately are NOT the ownership tag.
+  //
+  // A company being sold is still owned by its current owners until the deal
+  // closes, and deals do fall through — so the tag keeps saying what is
+  // legally true while these say what is coming. Same for a Canadian company
+  // under foreign control: calling Roots "US-owned" would be wrong, and
+  // saying only "Canadian" would be misleading. The label stays accurate and
+  // the warning sits beside it where it cannot be missed.
+  function alertsHtml(e) {
+    let out = "";
+    if (e.changingTo) {
+      out += `<span class="alert-tag alert-changing">⚠ Sale agreed — becoming ${e.changingTo}</span>`;
+    }
+    if (e.controlledFrom) {
+      out += `<span class="alert-tag alert-control">⚠ ${e.controlledFrom}-controlled</span>`;
+    }
+    return out;
+  }
+
   // Flagged entries get a way for readers to contribute what they know.
   //
   // This points at the submission form rather than a mailto: a mailto link
@@ -156,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="company-brand">${e.brand}</div>
           ${storeLinkHtml(e.domain)}
           ${madeInHtml(e)}
+          ${alertsHtml(e)}
           ${e.note ? `<div class="company-note">${e.note}</div>` : ""}
           ${verifyBadge}
           ${verifyActionHtml(e)}

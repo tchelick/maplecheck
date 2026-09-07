@@ -440,6 +440,29 @@ footer.site-footer .wrap {
 .made-mixed { color: #7a5c00; border-color: #c9a400; background: #fffbea; }
 .made-imported { color: #55524a; border-color: #bdb8ab; background: #f4f2ec; }
 
+/* Ownership warnings. Deliberately louder than the made-in tags and visually
+   distinct from the ownership tag itself, because they qualify it rather than
+   restate it. */
+.alert-tag {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin: 4px 6px 0 0;
+  border: 1px solid transparent;
+}
+.alert-changing {
+  color: #8a4b00;
+  background: #fff4e5;
+  border-color: #e09b3d;
+}
+.alert-control {
+  color: #1f4287;
+  background: #e8edf7;
+  border-color: #1f4287;
+}
 .verify-btn {
   display: inline-block;
   margin-top: 8px;
