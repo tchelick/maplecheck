@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.domain,
         e.hq || "",
         e.category || "",
+        (e.tags || []).join(" "),
         e.note || "",
         (e.alternatives || []).join(" "),
         (e.otherAlternatives || []).join(" "),
