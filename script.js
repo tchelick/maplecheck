@@ -70,6 +70,32 @@ document.addEventListener("DOMContentLoaded", () => {
     return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
   }
 
+  // Searching by product ("shoes", "coffee", "detergent") only works if the
+  // text describing what a company sells is searchable. The notes already
+  // carry that, so they go into the haystack alongside the alternatives —
+  // which is what makes a search for a US brand surface the Canadian options
+  // named in its entry. Built once per entry rather than per keystroke.
+  const haystacks = new Map();
+  function haystackFor(e) {
+    let h = haystacks.get(e.domain);
+    if (h === undefined) {
+      h = [
+        e.brand,
+        e.domain,
+        e.hq || "",
+        e.category || "",
+        e.note || "",
+        (e.alternatives || []).join(" "),
+        (e.otherAlternatives || []).join(" "),
+        e.alternativesNote || "",
+      ]
+        .join(" ")
+        .toLowerCase();
+      haystacks.set(e.domain, h);
+    }
+    return h;
+  }
+
   function tagFor(entry) {
     if (entry.ownership === "Canada") return { cls: "tag-ca", text: "Canadian" };
     if (entry.ownership === "US") return { cls: "tag-us", text: "US-owned" };
@@ -148,8 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const matchesCategory =
         activeCategory === "all" ||
         (activeCategory === "Other" ? !usedCategories.includes(e.category) : e.category === activeCategory);
-      const haystack = `${e.brand} ${e.domain} ${e.hq || ""} ${e.category || ""}`.toLowerCase();
-      const matchesSearch = haystack.includes(searchTerm.toLowerCase());
+      const matchesSearch = !searchTerm || haystackFor(e).includes(searchTerm.toLowerCase());
       return matchesOwnership && matchesCategory && matchesSearch;
     });
 
