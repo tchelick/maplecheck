@@ -475,6 +475,10 @@ footer.site-footer .wrap {
   padding: 32px;
   margin-top: 24px;
 }
+.contact-cta { margin: 24px 0 0; }
+/* Offset so the anchored card clears the sticky nav when jumped to. */
+#submit-form { scroll-margin-top: 84px; }
+
 .contact-card h3 { font-size: 18px; margin-bottom: 10px; }
 .form-embed {
   margin-top: 16px;
