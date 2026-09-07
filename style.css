@@ -238,6 +238,51 @@ footer.site-footer .wrap {
 .footer-links a { color: var(--ink-soft); text-decoration: none; }
 .footer-links a:hover { color: var(--ink); }
 .footer-meta { font-size: 13px; color: var(--ink-soft); }
+
+.footer-support-link {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+.footer-support-link:hover { color: var(--ink); }
+
+.kofi-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.kofi-modal-overlay.open { display: flex; }
+
+.kofi-modal-box {
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  height: 640px;
+  background: var(--paper-raised);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.kofi-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  z-index: 1;
+}
 /* flex-basis 100% drops the disclosure onto its own line below the footer
    row rather than squeezing the existing meta text and links. */
 .footer-affiliate {
