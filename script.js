@@ -129,15 +129,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // affiliateUrl is a separate field from storeUrl on purpose (see the note
+  // in data.js) — validated the same way, but never silently: a sponsored
+  // link always carries rel="sponsored" and a visible "Sponsored" marker, and
+  // the link text still shows the real destination domain, not the tracking
+  // host, so the display never implies we're sending someone somewhere we're
+  // not.
+  function safeAffiliateUrl(raw) {
+    try {
+      const u = new URL(raw);
+      if (u.protocol !== "https:") return null;
+      if (u.username || u.password) return null;
+      if (!DOMAIN_RE.test(u.hostname)) return null;
+      return u.href;
+    } catch (e) {
+      return null;
+    }
+  }
+
   function storeLinkHtml(e) {
+    const affiliate = e.affiliateUrl ? safeAffiliateUrl(e.affiliateUrl) : null;
     const override = e.storeUrl ? safeStoreUrl(e.storeUrl) : null;
+    const shown = override ? new URL(override).hostname : e.domain;
+    if (!DOMAIN_RE.test(shown)) return "";
+    if (affiliate) {
+      return `<a class="company-link" href="${affiliate}" target="_blank" rel="sponsored noopener noreferrer">${shown} ↗</a><span class="sponsored-tag" title="Affiliate link — MapleCheck may earn a commission at no extra cost to you">Sponsored</span>`;
+    }
     if (override) {
       // Show the hostname rather than the full URL — "ca.attitudeliving.com"
       // reads as a place, "https://ca.attitudeliving.com/" reads as noise.
-      const shown = new URL(override).hostname;
       return `<a class="company-link" href="${override}" target="_blank" rel="noopener noreferrer">${shown} ↗</a>`;
     }
-    if (!DOMAIN_RE.test(e.domain)) return "";
     return `<a class="company-link" href="https://${e.domain}" target="_blank" rel="noopener noreferrer">${e.domain} ↗</a>`;
   }
 

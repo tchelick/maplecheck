@@ -454,6 +454,21 @@ footer.site-footer .wrap {
 .made-mixed { color: #7a5c00; border-color: #c9a400; background: #fffbea; }
 .made-imported { color: #55524a; border-color: #bdb8ab; background: #f4f2ec; }
 
+/* Marks a store link as an affiliate link. Deliberately plain — not hidden,
+   not dressed up — next to the link itself, not buried only in the footer. */
+.sponsored-tag {
+  display: inline-block;
+  margin: 2px 0 0 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  vertical-align: middle;
+}
+
 /* Ownership warnings. Deliberately louder than the made-in tags and visually
    distinct from the ownership tag itself, because they qualify it rather than
    restate it. */
