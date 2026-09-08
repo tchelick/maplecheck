@@ -456,7 +456,7 @@ footer.site-footer .wrap {
 
 /* Marks a store link as an affiliate link. Deliberately plain — not hidden,
    not dressed up — next to the link itself, not buried only in the footer. */
-.sponsored-tag {
+.affiliate-tag {
   display: inline-block;
   margin: 2px 0 0 6px;
   padding: 1px 7px;

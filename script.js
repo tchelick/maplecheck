@@ -130,11 +130,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // affiliateUrl is a separate field from storeUrl on purpose (see the note
-  // in data.js) — validated the same way, but never silently: a sponsored
-  // link always carries rel="sponsored" and a visible "Sponsored" marker, and
-  // the link text still shows the real destination domain, not the tracking
-  // host, so the display never implies we're sending someone somewhere we're
-  // not.
+  // in data.js) — validated the same way, but never silently: an affiliate
+  // link always carries rel="sponsored" (the correct machine-readable value
+  // for search engines, regardless of the visible label) and a visible
+  // "Affiliate link" marker. Deliberately not "Sponsored" — that word reads
+  // as the company paying for placement or a favourable listing, which is
+  // backwards: the commission comes from the purchase, and ownership
+  // research happens independently of whether a link earns one. The link
+  // text still shows the real destination domain, not the tracking host, so
+  // the display never implies we're sending someone somewhere we're not.
   function safeAffiliateUrl(raw) {
     try {
       const u = new URL(raw);
@@ -153,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const shown = override ? new URL(override).hostname : e.domain;
     if (!DOMAIN_RE.test(shown)) return "";
     if (affiliate) {
-      return `<a class="company-link" href="${affiliate}" target="_blank" rel="sponsored noopener noreferrer">${shown} ↗</a><span class="sponsored-tag" title="Affiliate link — MapleCheck may earn a commission at no extra cost to you">Sponsored</span>`;
+      return `<a class="company-link" href="${affiliate}" target="_blank" rel="sponsored noopener noreferrer">${shown} ↗</a><span class="affiliate-tag" title="MapleCheck may earn a commission on purchases through this link, at no extra cost to you. This has no bearing on our research.">Affiliate link</span>`;
     }
     if (override) {
       // Show the hostname rather than the full URL — "ca.attitudeliving.com"
