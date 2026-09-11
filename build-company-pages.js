@@ -268,7 +268,7 @@ for (const [domain, e] of Object.entries(DATA)) {
 // Extensionless, to match the canonical tags on those pages. cleanUrls serves
 // both /companies and /companies.html, so listing the .html form here would
 // point Google at a URL that then declares a different canonical.
-const staticPages = ["", "companies", "contact", "feedback", "privacy"];
+const staticPages = ["", "companies", "findings", "contact", "feedback", "privacy"];
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   ...staticPages.map((p) => `${SITE}/${p}`),

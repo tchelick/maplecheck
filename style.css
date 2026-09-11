@@ -639,3 +639,43 @@ footer.site-footer .wrap {
 }
 .az-list a { color: var(--ink-soft, #555); text-decoration: none; }
 .az-list a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---- Findings page ----
+   The page most likely to be shared, so it is built to be read straight
+   through rather than scanned like the directory. Each finding leads with the
+   brand and the current owner, then the evidence — the order someone reads in
+   when deciding whether to believe it. */
+.findings-page { max-width: 760px; }
+.findings-page h1 { font-size: clamp(28px, 4.5vw, 40px); margin-bottom: 16px; }
+.findings-page h2 {
+  font-size: 22px;
+  margin: 48px 0 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.findings-blurb { font-size: 15px; color: var(--ink-soft, #555); line-height: 1.65; margin-bottom: 22px; }
+.findings-list { list-style: none; padding: 0; margin: 0; }
+.finding {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.finding:last-child { border-bottom: none; }
+.finding h3 { font-size: 18px; margin: 0 0 4px; }
+.finding h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.finding h3 a:hover { border-bottom-color: currentColor; }
+.finding-label {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #8a4b00;
+  background: #fff4e5;
+  border: 1px solid #e09b3d;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin: 0 0 8px;
+}
+.still-canadian .finding-label { color: #8c0000; background: #fdeaea; border-color: var(--canada-red); }
+.finding-note { font-size: 14.5px; line-height: 1.65; color: var(--ink-soft, #555); margin: 0; }
+.findings-cta { margin-top: 34px; font-size: 15px; }
+.home-findings-cta { font-size: 16px; margin-top: 18px; }
+.home-findings-cta a { color: var(--canada-red); text-decoration: none; border-bottom: 1px solid currentColor; }
