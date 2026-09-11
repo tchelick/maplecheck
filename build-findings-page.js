@@ -173,11 +173,11 @@ const html = `<!DOCTYPE html>
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(desc)}" />
 <meta property="og:url" content="${url}" />
-<meta property="og:image" content="${SITE}/logo.png" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="${SITE}/mascot.png" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(title)}" />
 <meta name="twitter:description" content="${esc(desc)}" />
-<meta name="twitter:image" content="${SITE}/logo.png" />
+<meta name="twitter:image" content="${SITE}/mascot.png" />
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="stylesheet" href="style.css" />
 </head>
@@ -199,6 +199,8 @@ const html = `<!DOCTYPE html>
 
 <section class="section">
   <div class="wrap findings-page">
+    <div class="findings-hero">
+      <div class="findings-hero-text">
     <h1>Canadian brands that aren't Canadian-owned</h1>
     <p class="section-lede">
       A brand can be founded here, headquartered here, staffed by Canadians and
@@ -213,6 +215,12 @@ const html = `<!DOCTYPE html>
       record, or the company's own statement, and every entry links to the
       sources we used. Where we are not certain, we say so rather than guess.
     </p>
+      </div>
+      <picture class="findings-hero-art">
+        <source srcset="mascot.webp" type="image/webp" />
+        <img src="mascot.png" width="1120" height="1079" alt="The MapleCheck maple leaf at a laptop with a magnifying glass, beside books labelled Research, Compare, Support Canadian and a checklist reading Check, Compare, Choose Canadian." />
+      </picture>
+    </div>
 `;
 
 const parts = [html];
