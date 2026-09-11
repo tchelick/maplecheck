@@ -298,6 +298,50 @@ const COMPANY_SLUGS = ${JSON.stringify(slugMap)};
 `
 );
 
+// Write a plain-HTML A-Z index into companies.html, between the markers.
+//
+// The interactive directory above it renders from JavaScript, so until this
+// existed no crawlable link pointed at any of the company pages — they were
+// reachable only through the sitemap, and through links that appear after JS
+// runs. Google does execute JavaScript, but on a second, slower pass that is
+// not worth betting 410 pages on. These are real anchors in the served HTML.
+// They are useful to readers too: a flat A-Z list is faster than search when
+// you already know the brand you want.
+const byLetter = new Map();
+for (const w of [...written].sort((a, b) => a.brand.localeCompare(b.brand, "en"))) {
+  const first = /^[a-z]/i.test(w.brand) ? w.brand[0].toUpperCase() : "#";
+  if (!byLetter.has(first)) byLetter.set(first, []);
+  byLetter.get(first).push(w);
+}
+const indexParts = ['    <h2 class="az-title">Every company we have researched</h2>',
+  '    <p class="az-intro">All ' + written.length + ', A to Z. Each links to what we found and the sources behind it.</p>'];
+for (const [letter, items] of byLetter) {
+  indexParts.push(`    <h3 class="az-letter">${letter}</h3>`);
+  indexParts.push('    <ul class="az-list">');
+  for (const w of items) {
+    indexParts.push(`      <li><a href="company/${w.slug}">${esc(w.brand)}</a></li>`);
+  }
+  indexParts.push("    </ul>");
+}
+const START = "<!-- AZ-INDEX:START -->";
+const END = "<!-- AZ-INDEX:END -->";
+const companiesPath = path.join(ROOT, "companies.html");
+let companies = fs.readFileSync(companiesPath, "utf8");
+const NL = "\n";
+const block = START + NL + indexParts.join(NL) + NL + "    " + END;
+if (companies.includes(START)) {
+  // Rewrite between the markers so the index is regenerated rather than
+  // appended to — otherwise a removed company would linger forever.
+  const from = companies.indexOf(START);
+  const to = companies.indexOf(END) + END.length;
+  companies = companies.slice(0, from) + block + companies.slice(to);
+} else {
+  const hook = '    <div class="company-list" id="company-list"></div>';
+  companies = companies.replace(hook, hook + NL + NL + "    " + block);
+}
+fs.writeFileSync(companiesPath, companies);
+
+console.log(`A-Z index     : ${written.length} crawlable links into companies.html`);
 console.log(`company pages : ${written.length} written to company/`);
 console.log(`company-slugs : written`);
 console.log(`sitemap.xml   : ${urls.length} URLs`);
