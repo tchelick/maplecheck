@@ -692,3 +692,14 @@ footer.site-footer .wrap {
   .findings-hero { grid-template-columns: 1.55fr 1fr; gap: 32px; }
   .findings-hero-art { max-width: 100%; margin: 0; }
 }
+
+/* ---- Feedback page mascot ----
+   Small and beside the heading rather than a hero: this page's job is to get
+   someone into the form, so the art adds warmth without pushing the form down
+   the screen. Hidden from assistive tech order concerns by being purely
+   decorative alongside a heading that already says what the page is. */
+.feedback-head { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.feedback-head h2 { margin: 0; flex: 1 1 260px; }
+.feedback-art { flex: 0 0 auto; width: 104px; }
+.feedback-art img { width: 100%; height: auto; display: block; }
+@media (max-width: 560px) { .feedback-art { width: 76px; } }
