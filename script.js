@@ -219,13 +219,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return `<a class="verify-btn" href="${SUBMIT_FORM}?${params}" target="_blank" rel="noopener">Know who owns this? Help verify →</a>`;
   }
 
+  // Links each row to its own page. Those pages exist so the directory is
+  // findable at all — this view renders from JavaScript, so search engines saw
+  // an empty page and none of the research could be found by someone googling
+  // "is <brand> Canadian owned". The slug map is generated alongside the pages
+  // so a link can never point at a page that was not written.
+  function companyPageLink(e) {
+    const slug = typeof COMPANY_SLUGS !== "undefined" ? COMPANY_SLUGS[e.domain] : null;
+    if (!slug) return e.brand;
+    return `<a class="company-brand-link" href="company/${slug}">${e.brand}</a>`;
+  }
+
   function rowHtml(e) {
     const tag = tagFor(e);
     const verifyBadge = e.confidence === "verify" ? `<div class="verify-note">⚠ Still being verified</div>` : "";
     return `
       <div class="company-row">
         <div>
-          <div class="company-brand">${e.brand}</div>
+          <div class="company-brand">${companyPageLink(e)}</div>
           ${storeLinkHtml(e)}
           ${madeInHtml(e)}
           ${alertsHtml(e)}
