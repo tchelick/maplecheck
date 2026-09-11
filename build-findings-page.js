@@ -189,6 +189,7 @@ const html = `<!DOCTYPE html>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="companies.html">Companies</a>
+      <a href="findings.html" class="active">Findings</a>
       <a href="contact.html">Add a company</a>
       <a href="feedback.html">Feedback</a>
       <a href="privacy.html">Privacy</a>
